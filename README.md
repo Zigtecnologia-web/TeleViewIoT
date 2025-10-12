@@ -53,3 +53,21 @@ docker-compose logs -f
 ```php
 docker-compose down
 ```
+
+### Worker Execution
+
+To start the telemetry worker in the background, use:
+
+```bash
+nohup php App/Workers/TelemetryWorker.php > logs/worker_$(date +%Y%m%d).log 2>&1 &
+
+# 🕵️‍♀️ Inspect Redis Queues
+
+# Use this command to access the Redis CLI inside the container
+# and verify the status or items in the queues.
+
+docker exec -it comedata-redis redis-cli
+
+# Example (inside redis-cli):
+# LLEN default_queue 
+# LRANGE default_queue 0 10

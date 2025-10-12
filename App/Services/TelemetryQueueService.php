@@ -16,27 +16,6 @@ class TelemetryQueueService
     }
 
     /**
-     * Push telemetry data into Redis queue
-     *
-     * @param array $data
-     * @return void
-     */
-    public function push(array $data): void
-    {
-        $this->redis->rpush('telemetry_queue', json_encode($data));
-    }
-
-    /**
-     * Pop telemetry data from Redis queue
-     *
-     * @return string|null JSON string from queue, or null if empty
-     */
-    public function pop(): ?string
-    {
-        return $this->redis->lpop('telemetry_queue');
-    }
-
-    /**
      * Process incoming telemetry fields and enqueue
      *
      * This method scans the array, finds fields starting with "field",
@@ -50,7 +29,7 @@ class TelemetryQueueService
         $deviceId = $data['api_key'] ?? 'unknown';
 
         foreach ($data as $key => $value) {
-            if ($key !== 'api_key') { // ignora apenas a chave de autenticação
+            if ($key !== 'api_key') {
                 $this->push([
                     'device_id'   => $deviceId,
                     'field_name'  => $key,
@@ -61,4 +40,24 @@ class TelemetryQueueService
         }
     }
 
+    /**
+     * Push telemetry data into Redis queue
+     *
+     * @param array $data
+     * @return void
+     */
+    private function push(array $data): void
+    {
+        $this->redis->rpush('telemetry_queue', json_encode($data));
+    }
+
+    /**
+     * Pop telemetry data from Redis queue
+     *
+     * @return string|null JSON string from queue, or null if empty
+     */
+    private function pop(): ?string
+    {
+        return $this->redis->lpop('telemetry_queue');
+    }
 }

@@ -1,11 +1,8 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
 
-// =========================
-// Reaproveita a conexão Eloquent do sistema
-// =========================
 require_once __DIR__ . '/../../System/Database/EloquentConnection.php';
-\App\System\Database\EloquentConnection::init(); // inicializa Eloquent globalmente
+\App\System\Database\EloquentConnection::init();
 
 use App\Services\TelemetryQueueService;
 use App\Models\Telemetry;
@@ -14,11 +11,8 @@ $queue = new TelemetryQueueService();
 
 echo "Telemetry Worker started...\n";
 
-// =========================
-// Loop principal
-// =========================
 while (true) {
-    $item = $queue->pop(); // lê da fila
+    $item = $queue->pop();
     if ($item) {
         $data = json_decode($item, true);
 
@@ -34,7 +28,6 @@ while (true) {
         foreach ($data as $key => $value) {
             if (in_array($key, ['api_key', 'time'])) continue;
 
-            // Insere no TimescaleDB usando a conexão do sistema
             Telemetry::create([
                 'device_id'   => $deviceId,
                 'field_name'  => $key,
