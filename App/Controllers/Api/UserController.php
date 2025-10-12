@@ -13,7 +13,6 @@ class UserController extends Controller
     public function __construct()
     {
         parent::__construct();
-
         //JwtAuthService::abortIfNotAuthenticated('Unauthorized');
     }
 
