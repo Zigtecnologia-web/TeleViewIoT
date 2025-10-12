@@ -38,3 +38,18 @@ DB_PASSWORD=secret
 REDIS_HOST=redis
 REDIS_PORT=6379
 ```
+
+## Running the Containers
+Start all containers in detached mode:
+
+```php
+docker-compose up -d
+```
+
+```php
+docker-compose logs -f
+```
+
+```php
+docker-compose down
+```
