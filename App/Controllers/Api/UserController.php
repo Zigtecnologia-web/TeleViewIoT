@@ -19,11 +19,5 @@ class UserController extends Controller
     public function index()
     {
         $params = $this->getQueryString();
-        echo 10;
-    }
-
-    public function store()
-    {
-          
     }
 }
