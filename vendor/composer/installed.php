@@ -3,7 +3,7 @@
         'name' => 'valdiney/vai',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '54cf28a7699657f6b8f948274f209b686fe7d0b4',
+        'reference' => '7bac8e1d32ab8b6d14b530a3587d8bf67e5cd1dd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -478,6 +478,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'predis/predis' => array(
+            'pretty_version' => 'v3.2.0',
+            'version' => '3.2.0.0',
+            'reference' => '9e9deec4dfd3ebf65d32eb368f498c646ba2ecd8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../predis/predis',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'psr/clock' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -883,7 +892,7 @@
         'valdiney/vai' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '54cf28a7699657f6b8f948274f209b686fe7d0b4',
+            'reference' => '7bac8e1d32ab8b6d14b530a3587d8bf67e5cd1dd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

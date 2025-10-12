@@ -37,7 +37,8 @@
         "illuminate/validation": "^11",
         "firebase/php-jwt": "^6.11",
         "pusher/pusher-php-server": "^7.2",
-        "illuminate/events": "^11.45" 
+        "illuminate/events": "^11.45",
+        "predis/predis": "^3.2" 
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0"

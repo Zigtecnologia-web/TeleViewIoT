@@ -72,6 +72,7 @@ class ComposerStaticInitf70348ac3b73b150e379efcb2a7ce2f7
             'Psr\\Http\\Client\\' => 16,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
+            'Predis\\' => 7,
             'Picqer\\Barcode\\' => 15,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
@@ -245,6 +246,10 @@ class ComposerStaticInitf70348ac3b73b150e379efcb2a7ce2f7
         'Psr\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'Picqer\\Barcode\\' => 
         array (
