@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "jwt-decode": "^4.0.0",
+    "pinia-plugin-persistedstate": "^4.2.0",
+    "v-mask": "^2.3.0"
+  }
+}

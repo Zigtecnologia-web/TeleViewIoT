@@ -1,0 +1,1 @@
+2025-10-12 00:32:11 [EXCEPTION] syntax error, unexpected token "}", expecting "," or ";" in /var/www/html/App/Controllers/Api/UserController.php on line 24
