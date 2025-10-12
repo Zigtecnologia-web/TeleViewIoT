@@ -1,0 +1,10 @@
+# Dependências do PHP (Composer)
+/vendor/
+
+# Dependências do JavaScript/Node.js (NPM)
+/node_modules/
+
+# Outros arquivos comuns para ignorar
+.env
+/dist/
+.vscode/
