@@ -22,3 +22,19 @@ We use **Docker Compose** to run 4 containers:
 | `nginx`         | `nginx:alpine`                  | Serves PHP application and static files       | 8080:80        |
 | `timescaledb`   | `timescale/timescaledb:latest-pg15` | Stores IoT time-series data                    | 5432:5432      |
 | `redis`         | `redis:alpine`                  | Queue and caching for IoT data                 | 6379:6379      |
+
+## .env
+```php
+APP_ENV=local
+APP_DEBUG=true
+
+DB_CONNECTION=pgsql
+DB_HOST=timescaledb
+DB_PORT=5432
+DB_DATABASE=comedata
+DB_USERNAME=comedata
+DB_PASSWORD=secret
+
+REDIS_HOST=redis
+REDIS_PORT=6379
+```
