@@ -19,7 +19,7 @@ class TelemetryController extends Controller
     public function store()
     {
         $params = (array) $this->getQueryString();
-        $this->queue->push($params);
+        $this->queue->execute($params);
         
         return JsonResponse::success(['queued' => true]);
     }

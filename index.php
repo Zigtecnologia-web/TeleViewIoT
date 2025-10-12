@@ -16,8 +16,8 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Database Eloquent ///////////////////////////
-require_once(__DIR__ . '/System/Database/Native.php');
+// Eloquent Connection ///////////////////////////
+require_once(__DIR__ . '/System/Database/EloquentConnection.php');
 
 // Default timezone /////////////////////////
 date_default_timezone_set('UTC');

@@ -14,21 +14,51 @@ class TelemetryQueueService
             'port' => env('REDIS_PORT', 6379)
         ]);
     }
-    
+
     /**
-     * Pushes telemetry data into a Redis queue for asynchronous processing.
+     * Push telemetry data into Redis queue
      *
-     * This method receives an array of telemetry data (e.g., temperature, humidity, etc.),
-     * encodes it to JSON, and appends it to the "telemetry_queue" list in Redis.
-     *
-     * The data is later consumed by a background worker that reads the queue
-     * and stores the information in TimescaleDB.
-     *
-     * @param array $data  The telemetry payload to enqueue (e.g. ['device_id' => 'sensor-01', 'temperature' => 28.3]).
+     * @param array $data
      * @return void
      */
     public function push(array $data): void
     {
         $this->redis->rpush('telemetry_queue', json_encode($data));
     }
+
+    /**
+     * Pop telemetry data from Redis queue
+     *
+     * @return string|null JSON string from queue, or null if empty
+     */
+    public function pop(): ?string
+    {
+        return $this->redis->lpop('telemetry_queue');
+    }
+
+    /**
+     * Process incoming telemetry fields and enqueue
+     *
+     * This method scans the array, finds fields starting with "field",
+     * and pushes them individually into Redis queue.
+     *
+     * @param array $data The request payload from device (e.g. $_GET or $_POST)
+     * @return void
+     */
+    public function execute(array $data): void
+    {
+        $deviceId = $data['api_key'] ?? 'unknown';
+
+        foreach ($data as $key => $value) {
+            if ($key !== 'api_key') { // ignora apenas a chave de autenticação
+                $this->push([
+                    'device_id'   => $deviceId,
+                    'field_name'  => $key,
+                    'field_value' => (float)$value,
+                    'timestamp'   => date('Y-m-d H:i:s')
+                ]);
+            }
+        }
+    }
+
 }

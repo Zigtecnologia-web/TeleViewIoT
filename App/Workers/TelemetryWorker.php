@@ -1,45 +1,51 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
 
+// =========================
+// Reaproveita a conexão Eloquent do sistema
+// =========================
+require_once __DIR__ . '/../../System/Database/EloquentConnection.php';
+\App\System\Database\EloquentConnection::init(); // inicializa Eloquent globalmente
+
 use App\Services\TelemetryQueueService;
-use App\Database\TimescaleDB; // ou seu wrapper/eloquent
+use App\Models\Telemetry;
 
 $queue = new TelemetryQueueService();
-$db = new TimescaleDB(); // ou PDO direto
 
 echo "Telemetry Worker started...\n";
 
+// =========================
+// Loop principal
+// =========================
 while (true) {
-    // Lê da fila Redis
-    $item = $queue->pop(); // método que consome a fila
+    $item = $queue->pop(); // lê da fila
     if ($item) {
         $data = json_decode($item, true);
 
-        // Certifica que temos os campos necessários
-        $deviceId = $data['device_id'] ?? null;
-        $keyName  = $data['key_name'] ?? null;
-        $keyValue = $data['key_value'] ?? null;
+        if (!$data) {
+            echo "Invalid JSON skipped: $item\n";
+            continue;
+        }
+
+        $deviceId = $data['api_key'] ?? 'unknown';
         $timestamp = $data['time'] ?? date('Y-m-d H:i:s');
-        $extra = $data['extra'] ?? [];
+        $extra = [];
 
-        if ($deviceId && $keyName && $keyValue !== null) {
-            // Insere no TimescaleDB
-            $db->insert(
-                'INSERT INTO telemetry (device_id, key_name, key_value, time, extra) VALUES (?, ?, ?, ?, ?)',
-                [
-                    $deviceId,
-                    $keyName,
-                    $keyValue,
-                    $timestamp,
-                    json_encode($extra)
-                ]
-            );
+        foreach ($data as $key => $value) {
+            if (in_array($key, ['api_key', 'time'])) continue;
 
-            echo "Processed: " . json_encode($data) . "\n";
-        } else {
-            echo "Invalid data skipped: " . json_encode($data) . "\n";
+            // Insere no TimescaleDB usando a conexão do sistema
+            Telemetry::create([
+                'device_id'   => $deviceId,
+                'field_name'  => $key,
+                'field_value' => is_numeric($value) ? (float)$value : 0,
+                'time'        => $timestamp,
+                'extra'       => $extra
+            ]);
+
+            echo "Processed: device_id=$deviceId, $key=$value\n";
         }
     } else {
-        sleep(1); // evita consumo de CPU quando fila está vazia
+        sleep(1);
     }
 }
