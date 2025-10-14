@@ -4,6 +4,7 @@ namespace System\Controller;
 use System\View\View;
 use System\Get\Get;
 use System\Post\Post;
+use System\Requests\QueryString;
 
 class Controller
 {
@@ -18,6 +19,11 @@ class Controller
         $this->get = new Get();
     }
 
+    public function getQueryString(): QueryString
+    {
+        return new QueryString($_GET ?? []);
+    }
+
     /**
 	 * This method is used to set the layout name
 	 * @return Void
@@ -27,16 +33,7 @@ class Controller
        $this->objectView->view($viewName, $withLayout, $data);
     }
 
-    public function getQueryString()
-    {
-        if (!empty($_GET)) {
-            return (object) $_GET;
-        }
-
-        return [];
-    }
-
-    public function getPostData()
+    public function post()
     {
         if (!empty($_POST)) {
             return (object) $_POST;

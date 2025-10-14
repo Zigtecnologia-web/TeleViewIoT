@@ -1,0 +1,55 @@
+2025-10-14 02:00:45 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:00:45 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:00:45 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:00:46 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:00:46 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:00:46 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:42 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:42 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:42 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:43 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:43 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:43 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:43 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:43 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:03:43 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:06:20 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:06:20 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:06:20 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:06:21 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:06:21 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:06:21 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:27 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:27 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:27 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:28 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:28 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:28 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:28 [ERROR] [2] Undefined variable $requet in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:28 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:08:28 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:10:22 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:10:22 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:10:23 [ERROR] [2] Attempt to read property "fields" on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:10:23 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:16:40 [ERROR] [2] Attempt to read property "fields" on array in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:16:40 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:16:41 [ERROR] [2] Attempt to read property "fields" on array in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:16:41 [ERROR] [2] Trying to access array offset on null in /var/www/html/App/Http/Controllers/v1/TelemetryController.php on line 25
+2025-10-14 02:24:14 [ERROR] [2] http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/index.php on line 42
+2025-10-14 02:25:06 [ERROR] [2] Attempt to read property "deviceId" on array in /var/www/html/App/Services/TelemetryQueueService.php on line 28
+2025-10-14 02:25:06 [ERROR] [2] Attempt to read property "fields" on array in /var/www/html/App/Services/TelemetryQueueService.php on line 31
+2025-10-14 02:25:06 [ERROR] [2] foreach() argument must be of type array|object, null given in /var/www/html/App/Services/TelemetryQueueService.php on line 31
+2025-10-14 02:25:06 [ERROR] [2] Cannot modify header information - headers already sent by (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/System/Responses/JsonResponse.php on line 14
+2025-10-14 02:25:06 [ERROR] [2] http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/System/Responses/JsonResponse.php on line 15
+2025-10-14 02:25:27 [ERROR] [2] Attempt to read property "deviceId" on array in /var/www/html/App/Services/TelemetryQueueService.php on line 28
+2025-10-14 02:25:27 [ERROR] [2] Attempt to read property "fields" on array in /var/www/html/App/Services/TelemetryQueueService.php on line 31
+2025-10-14 02:25:27 [ERROR] [2] foreach() argument must be of type array|object, null given in /var/www/html/App/Services/TelemetryQueueService.php on line 31
+2025-10-14 02:25:27 [ERROR] [2] Cannot modify header information - headers already sent by (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/System/Responses/JsonResponse.php on line 14
+2025-10-14 02:25:27 [ERROR] [2] http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/System/Responses/JsonResponse.php on line 15
+2025-10-14 02:37:43 [ERROR] [2] Attempt to read property "fields" on array in /var/www/html/App/Services/TelemetryQueueService.php on line 26
+2025-10-14 02:37:43 [ERROR] [2] foreach() argument must be of type array|object, null given in /var/www/html/App/Services/TelemetryQueueService.php on line 26
+2025-10-14 02:37:43 [ERROR] [2] Cannot modify header information - headers already sent by (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/System/Responses/JsonResponse.php on line 14
+2025-10-14 02:37:43 [ERROR] [2] http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/App/Http/Controllers/v1/TelemetryController.php:25) in /var/www/html/System/Responses/JsonResponse.php on line 15
+2025-10-14 02:37:53 [ERROR] [2] Attempt to read property "fields" on array in /var/www/html/App/Services/TelemetryQueueService.php on line 26
+2025-10-14 02:37:53 [ERROR] [2] foreach() argument must be of type array|object, null given in /var/www/html/App/Services/TelemetryQueueService.php on line 26

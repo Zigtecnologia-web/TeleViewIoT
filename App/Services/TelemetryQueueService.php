@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use Predis\Client as Redis;
+use App\Requests\StoreTelemetryRequest;
 
 class TelemetryQueueService
 {
@@ -16,46 +17,26 @@ class TelemetryQueueService
     }
 
     /**
-     * Process incoming telemetry fields and enqueue
+     * Processa os dados de telemetria e os enfileira no Redis.
      *
-     * This method scans the array, finds fields starting with "field",
-     * and pushes them individually into Redis queue.
-     *
-     * @param array $data The request payload from device (e.g. $_GET or $_POST)
      * @return void
      */
-    public function execute(array $data): void
-    {
-        $deviceId = $data['api_key'] ?? 'unknown';
-
-        foreach ($data as $key => $value) {
-            if ($key !== 'api_key') {
-                $this->push([
-                    'device_id'   => $deviceId,
-                    'field_name'  => $key,
-                    'field_value' => (float)$value,
-                    'timestamp'   => date('Y-m-d H:i:s')
-                ]);
-            }
+    public function execute(array $request): void
+    { 
+        foreach ($request->fields as $key => $value) {
+            $this->push([
+                'device_id'   => $deviceId,
+                'field_name'  => $key,
+                'field_value' => (float)$value,
+            ]);
         }
     }
 
-    /**
-     * Push telemetry data into Redis queue
-     *
-     * @param array $data
-     * @return void
-     */
     private function push(array $data): void
     {
         $this->redis->rpush('telemetry_queue', json_encode($data));
     }
 
-    /**
-     * Pop telemetry data from Redis queue
-     *
-     * @return string|null JSON string from queue, or null if empty
-     */
     private function pop(): ?string
     {
         return $this->redis->lpop('telemetry_queue');

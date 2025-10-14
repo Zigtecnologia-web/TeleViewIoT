@@ -28,15 +28,4 @@ class Telemetry extends Model
         'extra' => 'array',
         'field_value' => 'float',
     ];
-
-    public function scopeRecent($query, $minutes = 10)
-    {
-        return $query->where('time', '>=', now()->subMinutes($minutes));
-    }
-
-    public function scopeForDeviceKey($query, $deviceId, $key)
-    {
-        return $query->where('device_id', $deviceId)
-            ->where('key_name', $key);
-    }
 }

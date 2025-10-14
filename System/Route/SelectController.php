@@ -208,10 +208,10 @@ class SelectController
         if (strstr($controller, '\\')) {
             $stringToArray = explode('\\', $controller);
             $controllerNameWithfullNamespace = implode("\\", array_values($stringToArray));
-            $controller = "App\Controllers\\" . $controllerNameWithfullNamespace;
+            $controller = "App\Http\Controllers\\" . $controllerNameWithfullNamespace;
 
         } else {
-            $controller = "App\Controllers\\" . $controller;
+            $controller = "App\Http\Controllers\\" . $controller;
         }
 
         $this->verifyIfControllerExists($controller);

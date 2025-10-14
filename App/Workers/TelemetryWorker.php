@@ -1,4 +1,10 @@
 <?php
+/**
+ * Telemetry Worker
+ *
+ * Continuously processes telemetry data from a queue and stores it in the database.
+ */
+
 require __DIR__ . '/../../vendor/autoload.php';
 
 require_once __DIR__ . '/../../System/Database/EloquentConnection.php';

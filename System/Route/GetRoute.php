@@ -95,7 +95,7 @@ class GetRoute
             $this->existControllerOnRoute = true;
         }
         if ($this->urlParameters && array_key_exists(0, $this->urlParameters)) {
-            $this->controller = ucfirst($this->urlParameters[0]) . 'Controller';
+            $this->controller = ucfirst($this->urlParameters[0]) . 'Controllers';
             $this->controllerNameAliases = $this->urlParameters[0];
         }
     }
