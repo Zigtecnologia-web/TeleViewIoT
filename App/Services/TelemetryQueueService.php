@@ -2,7 +2,7 @@
 namespace App\Services;
 
 use Predis\Client as Redis;
-use App\Requests\StoreTelemetryRequest;
+use App\Http\DTO\TelemetryDTO;
 
 class TelemetryQueueService
 {
@@ -21,13 +21,13 @@ class TelemetryQueueService
      *
      * @return void
      */
-    public function execute(array $request): void
+    public function execute(TelemetryDTO $dto): void
     { 
-        foreach ($request->fields as $key => $value) {
+        foreach ($dto->fields as $key => $value) {
             $this->push([
                 'device_id'   => $deviceId,
                 'field_name'  => $key,
-                'field_value' => (float)$value,
+                'field_value' => (float) $value,
             ]);
         }
     }

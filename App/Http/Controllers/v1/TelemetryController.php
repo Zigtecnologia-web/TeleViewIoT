@@ -5,6 +5,7 @@ use System\Controller\Controller;
 use System\Responses\JsonResponse;
 use App\Http\Requests\StoreTelemetryRequest;
 use App\Services\TelemetryQueueService;
+use App\Http\DTO\TelemetryDTO;
 
 class TelemetryController extends Controller
 {
@@ -20,8 +21,10 @@ class TelemetryController extends Controller
 
     public function store()
     {
-        $request = $this->telemetryRequest->set($this->getQueryString()->toArray())->validated();
-        $this->queue->execute($request);
+        $request = $this->telemetryRequest->validated();
+        $dto = TelemetryDTO::fromArray($request);
+
+        $this->queue->execute($dto);
         
         return JsonResponse::success(['queued' => true]);
     }
