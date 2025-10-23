@@ -9,23 +9,14 @@ use App\Http\DTO\TelemetryDTO;
 
 class TelemetryController extends Controller
 {
-    private TelemetryQueueService $queue;
-    private $telemetryRequest;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->queue = new TelemetryQueueService();
-        $this->telemetryRequest = new StoreTelemetryRequest();
-    }
+    protected TelemetryQueueService $queue;
+    protected StoreTelemetryRequest $telemetryRequest;
 
     public function store()
     {
-        $request = $this->telemetryRequest->validated();
-        $dto = TelemetryDTO::fromArray($request);
-
+        $dto = TelemetryDTO::fromArray($this->telemetryRequest->validated());
         $this->queue->execute($dto);
-        
+
         return JsonResponse::success(['queued' => true]);
     }
 }

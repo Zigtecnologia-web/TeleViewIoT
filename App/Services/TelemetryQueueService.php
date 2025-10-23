@@ -1,44 +1,41 @@
 <?php
 namespace App\Services;
 
-use Predis\Client as Redis;
 use App\Http\DTO\TelemetryDTO;
+use App\Services\RedisService;
+use RuntimeException;
 
 class TelemetryQueueService
 {
-    private Redis $redis;
+    private RedisService $redisService;
 
-    public function __construct()
+    public function __construct() 
     {
-        $this->redis = new Redis([
-            'host' => env('REDIS_HOST', 'redis'),
-            'port' => env('REDIS_PORT', 6379)
-        ]);
+        $this->redisService = new RedisService();
     }
 
-    /**
-     * Processa os dados de telemetria e os enfileira no Redis.
-     *
-     * @return void
-     */
     public function execute(TelemetryDTO $dto): void
     { 
         foreach ($dto->fields as $key => $value) {
-            $this->push([
-                'device_id'   => $deviceId,
-                'field_name'  => $key,
-                'field_value' => (float) $value,
-            ]);
+            $payload = [
+                'device_id' => $dto->deviceId ?? 'unknown',
+            ];
+        
+            foreach ($dto->fields as $key => $value) {
+                $payload[$key] = (float) $value;
+            }
+        
+            $this->push($payload);
         }
     }
 
     private function push(array $data): void
     {
-        $this->redis->rpush('telemetry_queue', json_encode($data));
+        $this->redisService->rpush('telemetry_queue', json_encode($data));
     }
 
     private function pop(): ?string
     {
-        return $this->redis->lpop('telemetry_queue');
+        return $this->redisService->lpop('telemetry_queue');
     }
 }

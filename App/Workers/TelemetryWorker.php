@@ -1,50 +1,42 @@
 <?php
-/**
- * Telemetry Worker
- *
- * Continuously processes telemetry data from a queue and stores it in the database.
- */
-
 require __DIR__ . '/../../vendor/autoload.php';
 
 require_once __DIR__ . '/../../System/Database/EloquentConnection.php';
-\App\System\Database\EloquentConnection::init();
+\System\Database\EloquentConnection::init();
 
-use App\Services\TelemetryQueueService;
+use App\Services\RedisService;
 use App\Models\Telemetry;
-
-$queue = new TelemetryQueueService();
+use Carbon\Carbon;
+$queue = new RedisService();
 
 echo "Telemetry Worker started...\n";
 
 while (true) {
-    $item = $queue->pop();
+    $item = $queue->lpop('telemetry_queue');
     if ($item) {
         $data = json_decode($item, true);
+        if (!$data) continue;
 
-        if (!$data) {
-            echo "Invalid JSON skipped: $item\n";
-            continue;
-        }
-
-        $deviceId = $data['api_key'] ?? 'unknown';
-        $timestamp = $data['time'] ?? date('Y-m-d H:i:s');
+        $deviceId = $data['device_id'] ?? 'unknown';
         $extra = [];
 
-        foreach ($data as $key => $value) {
-            if (in_array($key, ['api_key', 'time'])) continue;
-
-            Telemetry::create([
-                'device_id'   => $deviceId,
-                'field_name'  => $key,
-                'field_value' => is_numeric($value) ? (float)$value : 0,
-                'time'        => $timestamp,
-                'extra'       => $extra
-            ]);
-
-            echo "Processed: device_id=$deviceId, $key=$value\n";
+       foreach ($data as $key => $value) {
+        // ignora chaves que não são campos de leitura
+        if (in_array($key, ['api_key', 'device_id'])) {
+            continue;
         }
+    
+        Telemetry::create([
+            'time'        => Carbon::now(),
+            'device_id'   => $data['device_id'],
+            'field_name'  => $key,
+            'field_value' => floatval($value),
+            'extra'       => $extra ?? null,
+        ]);
+    }
+          
+
     } else {
-        sleep(1);
+        sleep(1); // evita loop infinito consumindo CPU
     }
 }

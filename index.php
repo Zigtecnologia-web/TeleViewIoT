@@ -2,6 +2,7 @@
 
 use App\Traits\Log;
 use Dotenv\Dotenv;
+use System\Route\Container;
 use System\Route\GetRoute;
 use System\Route\SelectController;
 
@@ -27,10 +28,14 @@ try {
     date_default_timezone_set('UTC');
 
     // Route class ///////////////////////////////////
-    $route = new SelectController(new GetRoute);
+    $container = new Container();
 
-    // Load routes //////////////////////////////////
-    require_once(__DIR__ . '/routes/routes.php');
+    $container->bind(\System\Database\EloquentConnection::class, fn() => new \System\Database\EloquentConnection());
+
+    // Inicializa roteador com IOC
+    $route = new SelectController(new GetRoute(), $container);
+    require_once __DIR__ . '/routes/routes.php';
+    $route->run();
 
 } catch (InvalidArgumentException $e) {
     http_response_code(400);

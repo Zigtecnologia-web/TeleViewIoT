@@ -10,14 +10,15 @@ services:
     restart: unless-stopped
     working_dir: /var/www/html
     environment:
-      - APP_ENV=local
-      - DB_HOST=timescaledb
-      - DB_PORT=5432
-      - DB_DATABASE=comedata
-      - DB_USERNAME=comedata
-      - DB_PASSWORD=secret
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+    - APP_ENV=local
+    - DB_CONNECTION=pgsql
+    - DB_HOST=timescaledb
+    - DB_PORT=5432
+    - DB_DATABASE=comedata
+    - DB_USERNAME=comedata
+    - DB_PASSWORD=secret
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379
     volumes:
       - ./:/var/www/html:cached
       - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
