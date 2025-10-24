@@ -2,6 +2,7 @@
 
 use App\Traits\Log;
 use Dotenv\Dotenv;
+use System\Container\App;
 use System\Route\Container;
 use System\Route\GetRoute;
 use System\Route\SelectController;
@@ -29,6 +30,7 @@ try {
 
     // Route class ///////////////////////////////////
     $container = new Container();
+    App::set($container);
 
     $container->bind(\System\Database\EloquentConnection::class, fn() => new \System\Database\EloquentConnection());
 

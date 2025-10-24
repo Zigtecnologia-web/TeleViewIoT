@@ -7,12 +7,7 @@ use RuntimeException;
 
 class TelemetryQueueService
 {
-    private RedisService $redisService;
-
-    public function __construct() 
-    {
-        $this->redisService = new RedisService();
-    }
+    protected RedisService $redisService;
 
     public function execute(TelemetryDTO $dto): void
     { 
